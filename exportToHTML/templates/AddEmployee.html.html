@@ -1,0 +1,133 @@
+<html>
+<head>
+<title>AddEmployee.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bababa;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+AddEmployee.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;en&quot; </span><span class="s2">xmlns:th</span><span class="s3">=&quot;http://www.thymeleaf.org&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">Add Employee</span><span class="s0">&lt;/title&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot; </span><span class="s2">href</span><span class="s3">=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot; </span><span class="s2">href</span><span class="s3">=&quot;https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;script </span><span class="s2">src</span><span class="s3">=&quot;https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js&quot;</span><span class="s0">&gt;&lt;/script&gt;</span>
+    <span class="s0">&lt;script </span><span class="s2">src</span><span class="s3">=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js&quot;</span><span class="s0">&gt;&lt;/script&gt;</span>
+    <span class="s0">&lt;script </span><span class="s2">src</span><span class="s3">=&quot;https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js&quot;</span><span class="s0">&gt;&lt;/script&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+<span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;h1 </span><span class="s2">class</span><span class="s3">=&quot;p-3&quot;</span><span class="s0">&gt;</span><span class="s1">Add Employee</span><span class="s0">&lt;/h1&gt;</span>
+<span class="s0">&lt;form </span><span class="s2">th:action</span><span class="s3">=&quot;@{/saveEmployee}&quot; </span><span class="s2">th:object</span><span class="s3">=&quot;${emp}&quot; </span><span class="s2">method</span><span class="s3">=&quot;post&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-group col-md-12&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;col-md-3&quot;</span><span class="s0">&gt;</span><span class="s1">First Name</span><span class="s0">&lt;/label&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">th:field</span><span class="s3">=&quot;*{firstName}&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control input-sm&quot; </span><span class="s2">required</span><span class="s3">=&quot;required&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-group col-md-12&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;col-md-3&quot;</span><span class="s0">&gt;</span><span class="s1">Last Name</span><span class="s0">&lt;/label&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">th:field</span><span class="s3">=&quot;*{lastname}&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control input-sm&quot; </span><span class="s2">required</span><span class="s3">=&quot;required&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-group col-md-12&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;col-md-3&quot;</span><span class="s0">&gt;</span><span class="s1">Email</span><span class="s0">&lt;/label&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;email&quot; </span><span class="s2">th:field</span><span class="s3">=&quot;*{email}&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control input-sm&quot; </span><span class="s2">required</span><span class="s3">=&quot;required&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-group col-md-12&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;col-md-3&quot;</span><span class="s0">&gt;</span><span class="s1">Date Of Birth</span><span class="s0">&lt;/label&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;date&quot; </span><span class="s2">th:field</span><span class="s3">=&quot;*{dob}&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control input-sm&quot; </span><span class="s2">required</span><span class="s3">=&quot;required&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-group col-md-12&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;col-md-3&quot;</span><span class="s0">&gt;</span><span class="s1">Gender</span><span class="s0">&lt;/label&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-check-inline&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-check-label&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;radio&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-check-input&quot; </span><span class="s2">th:field</span><span class="s3">=&quot;*{gender}&quot; </span><span class="s2">value</span><span class="s3">=&quot;Male&quot;</span><span class="s0">/&gt;</span><span class="s1">Male </span><span class="s0">&lt;/label&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-check-inline&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-check-label&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;radio&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-check-input&quot; </span><span class="s2">th:field</span><span class="s3">=&quot;*{gender}&quot; </span><span class="s2">value</span><span class="s3">=&quot;Female&quot;</span><span class="s0">/&gt;</span><span class="s1">Female </span><span class="s0">&lt;/label&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-check-inline&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-check-label&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;radio&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-check-input&quot; </span><span class="s2">th:field</span><span class="s3">=&quot;*{gender}&quot; </span><span class="s2">value</span><span class="s3">=&quot;Other&quot;</span><span class="s0">/&gt;</span><span class="s1">Other </span><span class="s0">&lt;/label&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">= &quot;row p-2&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-2&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-success&quot;</span><span class="s0">&gt;</span><span class="s1">Create</span><span class="s0">&lt;/button&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;/div&gt;</span>
+<span class="s0">&lt;/form&gt;</span>
+<span class="s0">&lt;/div&gt;</span>
+
+<span class="s0">&lt;script </span><span class="s2">th:inline</span><span class="s3">=&quot;javascript&quot;</span><span class="s0">&gt;</span>
+    <span class="s1">window.onload = function() {</span>
+
+    <span class="s1">var msg = [[${message}]];</span>
+    <span class="s1">if (msg == &quot;save failure&quot;){</span>
+
+    <span class="s1">Command: toastr[&quot;error&quot;](&quot;user not saved !!&quot;)</span>
+
+<span class="s1">toastr.options = {</span>
+  <span class="s1">&quot;closeButton&quot;: false,</span>
+  <span class="s1">&quot;debug&quot;: false,</span>
+  <span class="s1">&quot;newestOnTop&quot;: false,</span>
+  <span class="s1">&quot;progressBar&quot;: false,</span>
+  <span class="s1">&quot;positionClass&quot;: &quot;toast-top-right&quot;,</span>
+  <span class="s1">&quot;preventDuplicates&quot;: false,</span>
+  <span class="s1">&quot;onclick&quot;: null,</span>
+  <span class="s1">&quot;showDuration&quot;: &quot;300&quot;,</span>
+  <span class="s1">&quot;hideDuration&quot;: &quot;1000&quot;,</span>
+  <span class="s1">&quot;timeOut&quot;: &quot;5000&quot;,</span>
+  <span class="s1">&quot;extendedTimeOut&quot;: &quot;1000&quot;,</span>
+  <span class="s1">&quot;showEasing&quot;: &quot;swing&quot;,</span>
+  <span class="s1">&quot;hideEasing&quot;: &quot;linear&quot;,</span>
+  <span class="s1">&quot;showMethod&quot;: &quot;fadeIn&quot;,</span>
+  <span class="s1">&quot;hideMethod&quot;: &quot;fadeOut&quot;</span>
+<span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s1">}</span>
+
+
+<span class="s0">&lt;/script&gt;</span>
+
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span></pre>
+</body>
+</html>
