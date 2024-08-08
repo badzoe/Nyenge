@@ -3,6 +3,9 @@ package com.springboot.crud.springBootCRUDApp.service;
 
 import com.springboot.crud.springBootCRUDApp.models.Employee;
 import com.springboot.crud.springBootCRUDApp.repo.EmployeeRepo;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Slf4j
+@AllArgsConstructor
 public class EmployeeService {
 
-    @Autowired
-    EmployeeRepo employeeRepo;
+
+    private final EmployeeRepo employeeRepo;
 
     public List<Employee> getAllEmployees() {
        List<Employee> list = new ArrayList<>();
@@ -36,11 +41,15 @@ public class EmployeeService {
     }
 
     public boolean deleteEmployee (Integer id) {
-        employeeRepo.deleteById(id);
-        if (getEmployeeId(id) != null){
+        try {
+            employeeRepo.deleteById(id);
+            return true;
+
+        }catch (Exception ex ){
+            log.error(ex.getMessage());
             return false;
         }
-        return true;
+
     }
 
 

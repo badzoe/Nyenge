@@ -11,103 +11,88 @@
 </head>
 <body>
 <div class="container">
-<h1 class="p-3">Add Employee</h1>
-<form th:action="@{/saveEmployee}" th:object="${emp}" method="post">
-    <div class="row">
-        <div class="form-group col-md-12">
-            <label class="col-md-3">First Name</label>
-            <div class="col-md-6">
-                <input type="text" th:field="*{firstName}" class="form-control input-sm" required="required">
+    <h1 class="p-3">Add Employee</h1>
+    <form th:action="@{/saveEmployee}" th:object="${emp}" method="post">
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="firstName">First Name</label>
+                <input type="text" th:field="*{firstname}" class="form-control input-sm" id="firstName" required="required">
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="form-group col-md-12">
-            <label class="col-md-3">Last Name</label>
-            <div class="col-md-6">
-                <input type="text" th:field="*{lastname}" class="form-control input-sm" required="required">
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="lastName">Last Name</label>
+                <input type="text" th:field="*{lastname}" class="form-control input-sm" id="lastName" required="required">
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="form-group col-md-12">
-            <label class="col-md-3">Email</label>
-            <div class="col-md-6">
-                <input type="email" th:field="*{email}" class="form-control input-sm" required="required">
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="email">Email</label>
+                <input type="email" th:field="*{email}" class="form-control input-sm" id="email" required="required">
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="form-group col-md-12">
-            <label class="col-md-3">Date Of Birth</label>
-            <div class="col-md-6">
-                <input type="date" th:field="*{dob}" class="form-control input-sm" required="required">
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="dob">Date Of Birth</label>
+                <input type="date" th:field="*{dob}" class="form-control input-sm" id="dob" required="required">
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="form-group col-md-12">
-            <label class="col-md-3">Gender</label>
-            <div class="col-md-6">
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="radio" class="form-check-input" th:field="*{gender}" value="Male"/>Male </label>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label>Gender</label>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" th:field="*{gender}" value="Male" id="genderMale">
+                    <label class="form-check-label" for="genderMale">Male</label>
                 </div>
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="radio" class="form-check-input" th:field="*{gender}" value="Female"/>Female </label>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" th:field="*{gender}" value="Female" id="genderFemale">
+                    <label class="form-check-label" for="genderFemale">Female</label>
                 </div>
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="radio" class="form-check-input" th:field="*{gender}" value="Other"/>Other </label>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" th:field="*{gender}" value="Other" id="genderOther">
+                    <label class="form-check-label" for="genderOther">Other</label>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class= "row p-2">
-        <div class="col-md-2">
-            <button class="btn btn-success">Create</button>
+        <div class="row p-2">
+            <div class="col-md-2">
+                <button class="btn btn-success">Create</button>
+            </div>
         </div>
-
-    </div>
-</form>
+    </form>
 </div>
 
 <script th:inline="javascript">
     window.onload = function() {
-
-    var msg = [[${message}]];
-    if (msg == "save failure"){
-
-    Command: toastr["error"]("user not saved !!")
-
-toastr.options = {
-  "closeButton": false,
-  "debug": false,
-  "newestOnTop": false,
-  "progressBar": false,
-  "positionClass": "toast-top-right",
-  "preventDuplicates": false,
-  "onclick": null,
-  "showDuration": "300",
-  "hideDuration": "1000",
-  "timeOut": "5000",
-  "extendedTimeOut": "1000",
-  "showEasing": "swing",
-  "hideEasing": "linear",
-  "showMethod": "fadeIn",
-  "hideMethod": "fadeOut"
-}
-    }
-
-    }
-
-
+        var msg = /*[[${message}]]*/ 'none';
+        if (msg === 'save success') {
+            toastr.success("User saved successfully!");
+        } else if (msg === 'save failed') {
+            toastr.error("User not saved!");
+        }
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+    };
 </script>
 
 </body>

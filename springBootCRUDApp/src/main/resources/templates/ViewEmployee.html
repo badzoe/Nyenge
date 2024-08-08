@@ -38,8 +38,8 @@
         <tbody>
         <tr th:each="employee : ${empList}">
             <td th:text="${employee.id}"></td>
-            <td th:text="${employee.firstName}"></td>
-            <td th:text="${employee.lastName}"></td>
+            <td th:text="${employee.firstname}"></td>
+            <td th:text="${employee.lastname}"></td>
             <td th:text="${employee.email}"></td>
             <td th:text="${employee.dob}"></td>
             <td th:text="${employee.gender}"></td>
@@ -52,36 +52,34 @@
         </tr>
         </tbody>
     </table>
-    <button class="btn btn-primary btn-block"><a th:href="/addEmployee">Add New Employee</a></button>
+    <button class="btn btn-primary btn-block"><a th:href="@{/}">Add New Employee</a></button>
 </div>
 <script th:inline="javascript">
     window.onload = function() {
-
-    var msg = [[${message}]];
-    console.log(msg);
-    if (msg == "save success"){
-
-    Command: toastr["success"]("user created successfully !!")
-
-toastr.options = {
-  "closeButton": false,
-  "debug": false,
-  "newestOnTop": false,
-  "progressBar": false,
-  "positionClass": "toast-top-right",
-  "preventDuplicates": false,
-  "onclick": null,
-  "showDuration": "300",
-  "hideDuration": "1000",
-  "timeOut": "5000",
-  "extendedTimeOut": "1000",
-  "showEasing": "swing",
-  "hideEasing": "linear",
-  "showMethod": "fadeIn",
-  "hideMethod": "fadeOut"
-}
-    }
-
+        var msg = [[${message}]];
+        console.log(msg);
+        if (msg.includes("success")) {
+            toastr["success"](msg);
+        } else {
+            toastr["error"](msg);
+        }
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
     }
 </script>
 
