@@ -3,6 +3,8 @@ package com.springboot.crud.springBootCRUDApp.controller;
 
 import com.springboot.crud.springBootCRUDApp.models.Employee;
 import com.springboot.crud.springBootCRUDApp.service.EmployeeService;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +17,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Controller
+@AllArgsConstructor
+@Slf4j
 public class EmployeeController {
 
-    @Autowired
-    EmployeeService employeeService;
+
+    private final EmployeeService employeeService;
 
     @GetMapping({"/", "/viewEmployees"})
     public String viewEmployees(@ModelAttribute("message") String message, Model model){
@@ -41,6 +45,8 @@ public class EmployeeController {
 
     @PostMapping("/saveEmployee")
     public String saveEmployee(Employee employee, RedirectAttributes redirectAttributes) {
+        log.info("Muno");
+
         if (employeeService.saveOrUpdateEmployee(employee)){
             redirectAttributes.addFlashAttribute("massage", "save success");
             return "redirect:/viewEmployees";

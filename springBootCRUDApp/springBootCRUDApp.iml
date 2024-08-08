@@ -108,5 +108,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:6.1.11" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.9.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:javax.servlet-api:4.0.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.18.34" level="project" />
   </component>
 </module>
