@@ -24,7 +24,12 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
 
-    @GetMapping({"/", "/viewEmployees"})
+    @GetMapping("/")
+    public String index (){
+        return "AddEmployee";
+    }
+
+    @GetMapping({ "/viewEmployees"})
     public String viewEmployees(@ModelAttribute("message") String message, Model model){
         List<Employee> employeeList = employeeService.getAllEmployees();
 
@@ -45,16 +50,15 @@ public class EmployeeController {
 
     @PostMapping("/saveEmployee")
     public String saveEmployee(Employee employee, RedirectAttributes redirectAttributes) {
-        log.info("Muno");
-
         if (employeeService.saveOrUpdateEmployee(employee)){
-            redirectAttributes.addFlashAttribute("massage", "save success");
+            redirectAttributes.addFlashAttribute("message", "save success");
             return "redirect:/viewEmployees";
         }
         redirectAttributes.addFlashAttribute("massage", "save failed");
         return "redirect:/addEmployee";
 
     }
+
 
     @GetMapping("/editEmployee/{id}")
     public String editEmployee(@PathVariable Integer id, String message,Model model) {
