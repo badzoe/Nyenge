@@ -25,7 +25,9 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     @GetMapping("/")
-    public String index (){
+    public String index (Model model){
+        model.addAttribute("emp",new Employee());
+
         return "AddEmployee";
     }
 
