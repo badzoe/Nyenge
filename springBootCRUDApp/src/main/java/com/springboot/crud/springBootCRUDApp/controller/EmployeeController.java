@@ -56,7 +56,7 @@ public class EmployeeController {
             redirectAttributes.addFlashAttribute("message", "save success");
             return "redirect:/viewEmployees";
         }
-        redirectAttributes.addFlashAttribute("massage", "save failed");
+        redirectAttributes.addFlashAttribute("message", "save failed");
         return "redirect:/addEmployee";
 
     }
